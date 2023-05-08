@@ -1,0 +1,32 @@
+# Compose V2
+
+# volumes are saved locally
+# sudo docker volume ls
+# sudo ls /var/lib/docker/volumes
+
+# service element
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    # ports:
+    #   - '6500:5432'
+    network_mode: "host"
+    volumes:
+      - progresDB:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+  pgAdmin:
+    image: dpage/pgadmin4
+    container_name: pgAdmin
+    # ports: 
+    #   - "5050:80"
+    network_mode: "host"
+    env_file:
+      - ./.env
+
+volumes:
+  progresDB:
+
+
+
